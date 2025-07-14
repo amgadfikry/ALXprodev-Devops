@@ -9,4 +9,5 @@ FORMATTED_WEIGHT=$(awk "BEGIN {printf \"%.0f\", $WEIGHT / 10}")
 
 CAPITALIZED_TYPE=$(echo "$TYPE" | sed 's/.*/\u&/')
 
+# "$name is of type $type, weighs ${formatted_weight}kg, and is ${formatted_height}m tall."
 echo "$NAME is of type $CAPITALIZED_TYPE, weighs ${FORMATTED_WEIGHT}kg, and is ${FORMATTED_HEIGHT}m tall."
