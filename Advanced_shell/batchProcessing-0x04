@@ -29,5 +29,5 @@ for POKEMON in "${POKEMON_LIST[@]}"; do
 done
 
 # Wait for all background jobs to complete
-wait
+wait #kill
 echo "✅ All Pokémon fetched and saved to ${DIR_NAME}"
