@@ -3,6 +3,10 @@ NAME=$(jq -r '.name' data.json)
 HEIGHT=$(jq -r '.height' data.json)
 WEIGHT=$(jq -r '.weight' data.json)
 TYPE=$(jq -r '.types[0].type.name' data.json)
-HEIGHT_METERS=$(awk "BEGIN {printf \"%.1f\", $HEIGHT / 10}")
-WEIGHT_KG=$(awk "BEGIN {printf \"%.0f\", $WEIGHT / 10}")
-echo "$NAME is of type $TYPE, weighs ${WEIGHT_KG}kg, and is ${HEIGHT_METERS}m tall."
+
+FORMATTED_HEIGHT=$(awk "BEGIN {printf \"%.1f\", $HEIGHT / 10}")
+FORMATTED_WEIGHT=$(awk "BEGIN {printf \"%.0f\", $WEIGHT / 10}")
+
+CAPITALIZED_TYPE=$(echo "$TYPE" | sed 's/.*/\u&/')
+
+echo "$NAME is of type $CAPITALIZED_TYPE, weighs ${FORMATTED_WEIGHT}kg, and is ${FORMATTED_HEIGHT}m tall."
