@@ -1,0 +1,28 @@
+#!/bin/bash
+
+DIR_NAME="pokemon_data"
+POKEMON_LIST=("Bulbasaur" "Ivysaur" "Venusaur" "Charmander" "Charmeleon")
+BASIC_URL="https://pokeapi.co/api/v2/pokemon/"
+
+if [ -d ${DIR_NAME} ]; then
+    echo "Directory ${DIR_NAME} already exists."
+else
+    mkdir ${DIR_NAME}
+    echo "Directory ${DIR_NAME} created."
+fi
+
+for POKEMON in "${POKEMON_LIST[@]}"; do
+    POKEMON_LOWER=$(echo "${POKEMON}" | tr '[:upper:]' '[:lower:]')
+    echo "Fetching data for ${POKEMON_LOWER}..."
+    URL="${BASIC_URL}${POKEMON}"
+    FILE_NAME="${DIR_NAME}/${POKEMON_LOWER}.json"
+    RESPONSE=$(curl -s ${URL})
+    if [ $? -eq 0 ]; then
+        echo "${RESPONSE}" > ${FILE_NAME}
+        echo "Saved data to ${FILE_NAME}✅"
+    else
+        echo "Failed to fetch data for ${POKEMON}."
+    fi
+    sleep 1
+done    
+
