@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+RESPONSE=$(curl -s https://pokeapi.co/api/v2/pokemon/)
+if echo "$RESPONSE" | grep -iq "error"; then
+	echo "$RESPONSE" > errors.txt
+else
+	echo "$RESPONSE" > data.json
+fi
