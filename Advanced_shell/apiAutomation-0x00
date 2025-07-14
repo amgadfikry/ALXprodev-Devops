@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-RESPONSE=$(curl -s https://pokeapi.co/api/v2/pokemon/)
+RESPONSE=$(curl -s https://pokeapi.co/api/v2/pokemon/pikachu)
 if echo "$RESPONSE" | grep -iq "error"; then
 	echo "$RESPONSE" > errors.txt
 else

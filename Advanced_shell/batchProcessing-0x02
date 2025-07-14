@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DIR_NAME="pokemon_data"
+#["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon"]
 POKEMON_LIST=("Bulbasaur" "Ivysaur" "Venusaur" "Charmander" "Charmeleon")
 BASIC_URL="https://pokeapi.co/api/v2/pokemon/"
 
